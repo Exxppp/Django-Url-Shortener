@@ -1,0 +1,56 @@
+{% extends 'short_url/base.html' %}
+
+{% block content %}
+    <section class="vh-100">
+        <div class="d-flex align-items-center h-100">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card" style="border-radius: 15px;">
+                            <div class="card-body p-5">
+                                <h2 class="text-uppercase text-center mb-5">Log in</h2>
+
+                                {% if messages or form.non_field_errors %}
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {% if messages %}
+                                            {% for message in messages %}
+                                                {{ message }}
+                                            {% endfor %}
+                                        {% else %}
+                                            {{ form.non_field_errors }}
+                                        {% endif %}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                        </button>
+                                    </div>
+                                {% endif %}
+
+                                <form action="{% url 'users:login' %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="mb-4">
+                                        {{ form.username }}
+                                    </div>
+
+                                    <div class="mb-4">
+                                        {{ form.password }}
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <input class="btn btn-primary btn-block btn-lg" type="submit" value="Login">
+                                    </div>
+
+                                    <p class="text-center text-muted mt-5 mb-0">Don't have an account?
+                                        <a href="{% url 'users:registration' %}" class="fw-bold text-body">
+                                            <u>Registration here</u>
+                                        </a>
+                                    </p>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

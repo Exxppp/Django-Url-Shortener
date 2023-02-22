@@ -1,0 +1,17 @@
+{% extends 'short_url/base.html' %}
+
+{% block content %}
+    <section class="vh-100">
+    <div class="container h-50">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="list-group my-5 fw-bold">
+                    <a href="{% url 'short_url:create' %}" class="list-group-item">Create new link</a>
+                    <a href="{% url 'short_url:info' %}" class="list-group-item">Info</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+{% endblock %}

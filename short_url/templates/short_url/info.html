@@ -1,0 +1,33 @@
+{% extends 'short_url/base.html' %}
+
+{% block content %}
+    <div class="container">
+    <table class="table">
+        <thead class="table-light">
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Description</th>
+            <th scope="col">Cliks</th>
+            <th scope="col">ShortUrl</th>
+            <th scope="col">Redirect</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        {% for link in links %}
+            <tbody>
+            <tr>
+
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ link.description }}</td>
+                <td>{{ link.quantity }}</td>
+                <td>{{ link.short_url }}</td>
+                <td>{{ link.url }}</td>
+                <td><a href="{% url 'short_url:delete_link' link.short_url %}"><i class="fas fa-trash"></i></a></td>
+
+            </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+    </div>
+
+{% endblock %}
